@@ -4,12 +4,11 @@ from aiogoogle import Aiogoogle
 from app.core.config import settings
 
 from app.models import CharityProject
-
-FORMAT = "%Y/%m/%d %H:%M:%S"
+from app.services import constants as const
 
 
 async def spreadsheets_create(wrapper_services: Aiogoogle) -> str:
-    now_date_time = datetime.now().strftime(FORMAT)
+    now_date_time = datetime.now().strftime(const.FORMAT)
     service = await wrapper_services.discover('sheets', 'v4')
     spreadsheet_body = {
         'properties': {'title': f'Отчёт от {now_date_time}',
@@ -51,11 +50,7 @@ async def spreadsheets_update_value(
     service = await wrapper_services.discover('sheets', 'v4')
     await set_user_permissions(spreadsheetid=spreadsheetId,
                                wrapper_services=wrapper_services)
-    table_values = [
-        ['Название проекта'],
-        ['Время, затраченное на сбор средств'],
-        ['Описание']
-    ]
+    table_values = const.TABLE_TITLES
     for project in closed_projects:
         table_values.append([
             project.name,

@@ -1,7 +1,6 @@
-from sqlalchemy import select, asc, desc
+from sqlalchemy import select
 from sqlalchemy.ext.asyncio import AsyncSession
 
-from app.core.db import datetime_func
 from app.crud.base import CRUDBase
 from app.models.charity_project import CharityProject
 
@@ -25,21 +24,12 @@ class CharityProjectCRUD(CRUDBase):
         self,
         session: AsyncSession
     ):
-        query = select(
-            CharityProject.name,
-            CharityProject.description,
-            (
-                datetime_func(CharityProject.close_date) -
-                datetime_func(CharityProject.create_date)
-            ).label('lifetime')
+        closed_projects = await session.execute(
+            select(CharityProject).where(
+                CharityProject.fully_invested
+            ).order_by(CharityProject.close_date - CharityProject.create_date)
         )
-        query = (
-            query.order_by(asc('lifetime')),
-            query.order_by(desc('lifetime'))
-        )[False]
-
-        closed_projects = await session.execute(query)
-        return closed_projects.all()
+        return closed_projects.scalars().all()
 
 
 charity_crud = CharityProjectCRUD(CharityProject)

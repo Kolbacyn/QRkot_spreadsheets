@@ -1,4 +1,4 @@
-from datetime import datetime, timedelta
+from datetime import datetime
 
 from aiogoogle import Aiogoogle
 from app.core.config import settings
@@ -54,7 +54,7 @@ async def spreadsheets_update_value(
     for project in closed_projects:
         table_values.append([
             project.name,
-            str(timedelta(project.lifetime)),
+            str(project.close_date - project.create_date),
             project.description
         ])
     update_body = {

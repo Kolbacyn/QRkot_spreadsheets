@@ -1,4 +1,4 @@
-from sqlalchemy import Column, Integer, func
+from sqlalchemy import Column, Integer
 from sqlalchemy.ext.asyncio import AsyncSession, create_async_engine
 from sqlalchemy.orm import declarative_base, declared_attr, sessionmaker
 
@@ -29,11 +29,3 @@ LocalAsyncSession = sessionmaker(
 async def get_async_session():
     async with LocalAsyncSession() as async_session:
         yield async_session
-
-datetime_func = None
-if settings.database_url.startswith('sqlite'):
-    datetime_func = func.julianday
-else:
-    raise Exception(
-        'Не определена функция извлечения времени из БД!'
-    )

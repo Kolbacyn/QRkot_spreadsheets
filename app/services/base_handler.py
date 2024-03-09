@@ -29,8 +29,7 @@ class BaseHandler:
         """
         if self.CRUD is None:
             raise NotImplementedError(const.DEFINE_CONSTANT)
-        all_projects = await self.CRUD.get_multi(self.session)
-        return all_projects
+        return await self.CRUD.get_multi(self.session)
 
     async def create_object(
         self, object_in: Union[CharityProjectCreate, DonationBase]
@@ -42,5 +41,4 @@ class BaseHandler:
             raise NotImplementedError(const.DEFINE_CONSTANT)
         new_object = await self.CRUD.create(object_in, self.session)
         investing_routine = Investment(new_object, self.session)
-        new_object = await investing_routine.money_distribution()
-        return new_object
+        return await investing_routine.money_distribution()

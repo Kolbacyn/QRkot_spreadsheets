@@ -42,12 +42,12 @@ async def set_user_permissions(
 
 
 async def spreadsheets_update_value(
-        spreadsheetId: str,
+        spreadsheetid: str,
         closed_projects: list[CharityProject],
         wrapper_services: Aiogoogle
 ) -> None:
     service = await wrapper_services.discover(const.GOOGLE_SHEETS, const.VERSION_4)
-    await set_user_permissions(spreadsheetid=spreadsheetId,
+    await set_user_permissions(spreadsheetid=spreadsheetid,
                                wrapper_services=wrapper_services)
     table_values = const.TABLE_TITLES
     for project in closed_projects:
@@ -62,7 +62,7 @@ async def spreadsheets_update_value(
     }
     await wrapper_services.as_service_account(
         service.spreadsheets.values.update(
-            spreadsheetId=spreadsheetId,
+            spreadsheetId=spreadsheetid,
             range='A1:E30',
             valueInputOption='USER_ENTERED',
             json=update_body

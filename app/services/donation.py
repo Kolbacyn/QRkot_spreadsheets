@@ -15,7 +15,6 @@ class DonationHandler(BaseHandler):
 
         Возвращает список пожертвований пользователя.
         """
-        user_donations = await donation_crud.get_user_donations(
+        return await donation_crud.get_user_donations(
             self.user, self.session
         )
-        return user_donations

@@ -21,8 +21,7 @@ class CharityProjectHandler(BaseHandler):
 
         Создает проект.
         """
-        new_charity_project = await super().create_object(charity_project)
-        return new_charity_project
+        return await super().create_object(charity_project)
 
     async def delete_charity_project(self, project_id: int) -> CharityProject:
         """
@@ -33,8 +32,7 @@ class CharityProjectHandler(BaseHandler):
         charity_project = await check_project_before_delete(
             project_id, self.session
         )
-        charity_project = await self.CRUD.remove(charity_project, self.session)
-        return charity_project
+        return await self.CRUD.remove(charity_project, self.session)
 
     async def update_charity_project(
         self, project_id: int, project: CharityProjectUpdate
@@ -51,5 +49,4 @@ class CharityProjectHandler(BaseHandler):
             charity_project, project, self.session
         )
         investing_routine = Investment(charity_project, self.session)
-        charity_project = await investing_routine.money_distribution()
-        return charity_project
+        return await investing_routine.money_distribution()

@@ -5,11 +5,7 @@ from sqlalchemy.ext.asyncio import AsyncSession
 from app.api.endpoints.validators import check_project_exists, check_project_name_duplicate
 from app.core.db import get_async_session
 from app.core.user import current_superuser
-from app.schemas.project import (
-    CharityProjectCreate,
-    CharityProjectDB,
-    CharityProjectUpdate
-)
+from app.schemas.project import CharityProjectCreate, CharityProjectDB, CharityProjectUpdate
 from app.services.project import CharityProjectHandler
 
 router = APIRouter()

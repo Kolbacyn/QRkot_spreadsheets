@@ -6,7 +6,6 @@ from app.core.user import auth_backend, fastapi_users
 from app.schemas.user import UserCreate, UserRead, UserUpdate
 from app.services import constants as const
 
-
 router = APIRouter()
 
 router.include_router(

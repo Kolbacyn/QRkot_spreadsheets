@@ -1,6 +1,7 @@
 from app.api.endpoints.validators import check_project_exists
 from app.crud.project import charity_crud
-from app.crud.validators import check_project_before_delete, check_project_before_update
+from app.crud.validators import (check_project_before_delete,
+                                 check_project_before_update)
 from app.models import CharityProject
 from app.schemas.project import CharityProjectCreate, CharityProjectUpdate
 from app.services.base_handler import BaseHandler

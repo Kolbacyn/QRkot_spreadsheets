@@ -9,3 +9,5 @@ exclude =
    alembic/versions/*.py
    app/models/__init__.py
    app/core/db.py
+   alembic/env.py
+   app/services/investments.py

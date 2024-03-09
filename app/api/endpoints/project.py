@@ -6,8 +6,8 @@ from app.api.endpoints.validators import check_project_exists, check_project_nam
 from app.core.db import get_async_session
 from app.core.user import current_superuser
 from app.schemas.project import (
-    CharityProjectDB,
     CharityProjectCreate,
+    CharityProjectDB,
     CharityProjectUpdate
 )
 from app.services.project import CharityProjectHandler

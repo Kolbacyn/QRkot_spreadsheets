@@ -1,8 +1,8 @@
 from datetime import datetime
 
 from aiogoogle import Aiogoogle
-from app.core.config import settings
 
+from app.core.config import settings
 from app.models import CharityProject
 from app.services import constants as const
 

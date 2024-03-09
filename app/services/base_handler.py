@@ -2,13 +2,14 @@ from typing import Union
 
 from sqlalchemy.ext.asyncio import AsyncSession
 
-from app.models import User, CharityProject, Donation
 from app.crud.donation import DonationCRUD
 from app.crud.project import CharityProjectCRUD
-from app.schemas.project import CharityProjectCreate
+from app.models import CharityProject, Donation, User
 from app.schemas.donation import DonationBase
-from app.services.investment import Investment
+from app.schemas.project import CharityProjectCreate
 from app.services import constants as const
+from app.services.investment import Investment
+
 
 
 class BaseHandler:

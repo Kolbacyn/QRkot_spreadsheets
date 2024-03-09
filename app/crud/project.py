@@ -17,8 +17,7 @@ class CharityProjectCRUD(CRUDBase):
         db_project_id = await session.execute(
             select(self.model.id).where(self.model.name == name)
         )
-        db_project_id = db_project_id.scalars().first()
-        return db_project_id
+        return db_project_id.scalars().first()
 
     async def get_projects_by_completion_rate(
         self,

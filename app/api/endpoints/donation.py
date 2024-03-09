@@ -29,10 +29,9 @@ async def create_donation(
     Создает пожертвование.
     """
     donation_handler = DonationHandler(session, user)
-    new_donation = await donation_handler.create_object(
+    return await donation_handler.create_object(
         donation
     )
-    return new_donation
 
 
 @router.get(

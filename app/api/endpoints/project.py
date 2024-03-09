@@ -1,5 +1,4 @@
 from fastapi import APIRouter, Depends
-
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.api.endpoints.validators import check_project_exists, check_project_name_duplicate

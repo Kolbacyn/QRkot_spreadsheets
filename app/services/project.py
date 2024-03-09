@@ -7,7 +7,6 @@ from app.services.base_handler import BaseHandler
 from app.services.investment import Investment
 
 
-
 class CharityProjectHandler(BaseHandler):
     """
     Хэндлер для работы с проектами.

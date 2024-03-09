@@ -14,7 +14,7 @@ TOTAL_SHOULD_BE_GREATER_THAN_INVESTED = 'Конечная сумма должн�
 
 TOTAL_ZERO = 0
 
-# titles
+# titles and keys
 
 TABLE_TITLES = [
     ['Название проекта'],
@@ -22,7 +22,18 @@ TABLE_TITLES = [
     ['Описание']
 ]
 TABLE = 'Отчеты QRkot'
+SHEET_TYPE = 'GRID'
 
 # formats
 
-FORMAT = "%Y/%m/%d %H:%M:%S"
+FORMAT = '%Y/%m/%d %H:%M:%S'
+
+# Google services
+
+GOOGLE_SHEETS = 'sheets'
+GOOGLE_DRIVE = 'drive'
+
+# versions
+
+VERSION_3 = '3'
+VERSION_4 = '4'

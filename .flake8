@@ -7,3 +7,5 @@ max-complexity = 10
 exclude = 
    tests
    alembic/versions/*.py
+   app/models/__init__.py
+   app/core/db.py

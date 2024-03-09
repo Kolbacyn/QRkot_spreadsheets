@@ -11,7 +11,6 @@ from app.services import constants as const
 from app.services.investment import Investment
 
 
-
 class BaseHandler:
     """
     Базовый класс для работы с данными
